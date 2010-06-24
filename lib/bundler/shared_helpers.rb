@@ -37,14 +37,14 @@ module Bundler
       until !File.directory?(current) || current == previous
         filename = File.join(current, 'Gemfile')
         return filename if File.file?(filename)
-        current, previous = File.expand_path("..", current), current
+        current, previous = File.expand_path(File.join(current, "..")), current
       end
     end
 
     def clean_load_path
       # handle 1.9 where system gems are always on the load path
       if defined?(::Gem)
-        me = File.expand_path("../../", __FILE__)
+        me = File.expand_path(File.join(__FILE__, "..", ".."))
         $LOAD_PATH.reject! do |p|
           next if File.expand_path(p).include?(me)
           p != File.dirname(__FILE__) &&

@@ -45,7 +45,7 @@ module Bundler
         end
       else
         puts "Writing new Gemfile to #{Dir.pwd}/Gemfile"
-        FileUtils.cp(File.expand_path('../templates/Gemfile', __FILE__), 'Gemfile')
+        FileUtils.cp(File.expand_path(File.join(__FILE__, '..', 'templates', 'Gemfile')), 'Gemfile')
       end
     end
 
@@ -213,7 +213,7 @@ module Bundler
       rubyopt = [ENV["RUBYOPT"]].compact
       if rubyopt.empty? || rubyopt.first !~ /-rbundler\/setup/
         rubyopt.unshift "-rbundler/setup"
-        rubyopt.unshift "-I#{File.expand_path('../..', __FILE__)}"
+        rubyopt.unshift "-I#{File.expand_path(File.join(__FILE__, '..', '..'))}"
         ENV["RUBYOPT"] = rubyopt.join(' ')
       end
 
