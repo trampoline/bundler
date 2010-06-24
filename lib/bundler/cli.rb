@@ -1,4 +1,4 @@
-$:.unshift File.expand_path('../vendor', __FILE__)
+$:.unshift File.expand_path(File.join(__FILE__, '..', 'vendor' ))
 require 'thor'
 require 'rubygems/config_file'
 
