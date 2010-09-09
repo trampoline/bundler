@@ -1,4 +1,4 @@
-$:.unshift File.expand_path('../vendor', __FILE__)
+$:.unshift File.expand_path(File.join(__FILE__, '..', 'vendor' ))
 require 'thor'
 require 'thor/actions'
 require 'rubygems/config_file'
@@ -83,7 +83,7 @@ module Bundler
         end
       else
         puts "Writing new Gemfile to #{Dir.pwd}/Gemfile"
-        FileUtils.cp(File.expand_path('../templates/Gemfile', __FILE__), 'Gemfile')
+        FileUtils.cp(File.expand_path(File.join(__FILE__, '..', 'templates', 'Gemfile')), 'Gemfile')
       end
     end
 

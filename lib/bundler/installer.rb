@@ -69,7 +69,7 @@ module Bundler
 
     def generate_bundler_executable_stubs(spec)
       bin_path = Bundler.bin_path
-      template = File.read(File.expand_path('../templates/Executable', __FILE__))
+      template = File.read(File.expand_path(File.join(__FILE__, '..', 'templates', 'Executable')))
       relative_gemfile_path = Bundler.default_gemfile.relative_path_from(bin_path)
 
       spec.executables.each do |executable|
